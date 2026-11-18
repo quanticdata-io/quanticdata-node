@@ -1,0 +1,96 @@
+{
+  "method": "GET",
+  "path": "/scraper/serp/bulk/{jobId}",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Bulk SERP status",
+        "payload": {
+          "id": "sb_4d1e9c",
+          "status": "completed",
+          "query": "best coffee grinder",
+          "total": 3,
+          "completed": 3,
+          "failed": 0,
+          "pages": [
+            {
+              "page": 1,
+              "organic_count": 10,
+              "bytes": 210331,
+              "path": "http"
+            },
+            {
+              "page": 2,
+              "organic_count": 10,
+              "bytes": 198002,
+              "path": "http"
+            },
+            {
+              "page": 3,
+              "organic_count": 9,
+              "bytes": 190114,
+              "path": "http"
+            }
+          ],
+          "organic": [
+            {
+              "rank": 1,
+              "title": "The 6 Best Coffee Grinders of 2026",
+              "link": "https://example.com/reviews/coffee-grinders",
+              "display_link": "example.com",
+              "description": "…"
+            }
+          ],
+          "related_searches": [],
+          "ai_overview": null,
+          "nextCursor": 29,
+          "createdAt": 1759828364000,
+          "finishedAt": 1759828391000
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Job not found"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper service unavailable. Please try again later."
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

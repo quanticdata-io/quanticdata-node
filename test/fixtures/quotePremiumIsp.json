@@ -1,0 +1,91 @@
+{
+  "method": "POST",
+  "path": "/public/premium-isp/quote",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Success",
+        "payload": {
+          "product": "city",
+          "type": "city",
+          "length": "1_month",
+          "days": 30,
+          "location": "United States - New York City",
+          "city": "New York City",
+          "country": "United States",
+          "asn": 7922,
+          "carrierName": "Comcast",
+          "udp": false,
+          "quantity": 10,
+          "replacements": 2,
+          "vatRate": 0,
+          "vat": 0,
+          "currency": "USD",
+          "paymentMethod": "BALANCE",
+          "sufficientBalance": true,
+          "reserved": false,
+          "quotedAt": "2026-10-19T10:00:00.000Z"
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Invalid format. Must be one of: markdown, html, text (or data_format markdown/screenshot, format raw)"
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Premium ISP needs your own API key. Create one in the dashboard under API keys.",
+        "payload": {
+          "code": "KEY_REQUIRED"
+        }
+      }
+    },
+    "409": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This city is not available right now.",
+        "payload": {
+          "code": "CITY_UNAVAILABLE"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Premium ISP is not available through the API yet. Use the dashboard to buy Premium ISP plans.",
+        "payload": {
+          "code": "PRODUCT_DISABLED"
+        }
+      }
+    }
+  }
+}

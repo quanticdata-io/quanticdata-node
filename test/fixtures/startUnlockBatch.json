@@ -1,0 +1,134 @@
+{
+  "method": "POST",
+  "path": "/scraper/unlock/batch",
+  "responses": {
+    "202": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Batch accepted",
+        "payload": {
+          "batch_id": "ub_5e1c9a40d27f",
+          "status": "running",
+          "total": 3,
+          "status_url": "/api/v1/scraper/unlock/batch/ub_5e1c9a40d27f"
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "requests[1]: rotation applies to the whole batch; set it in defaults",
+        "payload": {
+          "code": "bad_request",
+          "retryable": false,
+          "billed": false,
+          "hint": "Fix the parameter named in the message and send the request again.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors"
+        }
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "402": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This account has no residential Web Unlocker GB yet. The unlocker is prepaid per GB, separate from the Data API free credit, and paid from your wallet balance. Buy GB, then retry, your API key stays the same: https://app.quanticdata.io/plans?network=UNLOCK&utm_source=api&utm_medium=402&utm_campaign=web-unlocker",
+        "payload": {
+          "code": "no_credit",
+          "retryable": false,
+          "billed": false,
+          "hint": "Buy GB from the dashboard, then retry with the same key or proxy user.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "reason": "never_bought",
+          "tier": "premium",
+          "unlock_gb_remaining": 0,
+          "unlock_gb_purchased": 0,
+          "expires_at": null,
+          "expired": false,
+          "buy_url": "https://app.quanticdata.io/plans?network=UNLOCK&utm_source=api&utm_medium=402&utm_campaign=web-unlocker"
+        }
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The mobile Web Unlocker has no exit pool for your account yet. Buy mobile unlocker GB, or use the premium tier.",
+        "payload": {
+          "code": "no_exit_pool",
+          "retryable": false,
+          "billed": false,
+          "hint": "Buy GB on this tier so its exit pool is set up, or use tier \"premium\".",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "tier": "mobile"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Too many requests for this account right now.",
+        "payload": {
+          "code": "rate_limited",
+          "retryable": true,
+          "billed": false,
+          "hint": "Wait for Retry-After seconds, lower your concurrency, or move to a plan with a higher limit.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "retry_after": 5
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The unlocker hit an internal error.",
+        "payload": {
+          "code": "internal_error",
+          "retryable": true,
+          "billed": false,
+          "hint": "Retry; if it persists contact support with the request_id.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The unlocker service is not responding.",
+        "payload": {
+          "code": "service_unavailable",
+          "retryable": true,
+          "billed": false,
+          "hint": "Retry in a few seconds.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors"
+        }
+      }
+    },
+    "504": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "No response before timeout_ms ran out.",
+        "payload": {
+          "code": "timeout",
+          "retryable": true,
+          "billed": false,
+          "hint": "Raise timeout_ms (up to 120000) or use mode \"tls\" for a faster first answer.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors"
+        }
+      }
+    }
+  }
+}

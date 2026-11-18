@@ -1,0 +1,88 @@
+{
+  "method": "GET",
+  "path": "/public/proxies",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Success",
+        "payload": {
+          "proxies": [
+            {
+              "id": "prx_1",
+              "orderId": "ord_8c21",
+              "planName": "Residential Premium 5 GB",
+              "planType": "residentialpremium",
+              "planTypeName": "Residential Premium",
+              "username": "user_8c21",
+              "password": "p4ssw0rd",
+              "bandwidth": 5,
+              "bandwidthGB": 5,
+              "bandwidthLeft": 3.2,
+              "bandwidthLeftGB": 3.2,
+              "bandwidthUsed": 1.8,
+              "bandwidthUsedGB": 1.8,
+              "bandwidthUsagePercent": 36,
+              "isUnlimited": false,
+              "expiry": "2026-11-06T00:00:00.000Z",
+              "expiresAt": "2026-11-06T00:00:00.000Z",
+              "isActive": true,
+              "isExpired": false,
+              "daysRemaining": 30,
+              "hoursRemaining": 720,
+              "ips": 0,
+              "whitelistSlots": 0,
+              "whitelistedIPs": [],
+              "region": "Global",
+              "speed": null,
+              "highConcurrency": false,
+              "highPriority": false,
+              "createdAt": "2026-10-06T10:00:00.000Z"
+            }
+          ],
+          "pagination": {
+            "total": 1,
+            "limit": 50,
+            "offset": 0,
+            "hasMore": false
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Invalid format. Must be one of: markdown, html, text (or data_format markdown/screenshot, format raw)"
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper service unavailable. Please try again later."
+      }
+    }
+  }
+}

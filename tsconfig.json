@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": false,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ],
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "quanticdata": [
+        "./src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "test",
+    "examples",
+    "*.config.ts"
+  ]
+}

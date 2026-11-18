@@ -1,0 +1,58 @@
+{
+  "method": "DELETE",
+  "path": "/scraper/serp/bulk/{jobId}",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Bulk SERP cancelled",
+        "payload": {
+          "id": "sb_4d1e9c",
+          "status": "cancelled"
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Job not found"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper service unavailable. Please try again later."
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

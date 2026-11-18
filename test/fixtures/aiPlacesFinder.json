@@ -1,0 +1,89 @@
+{
+  "method": "POST",
+  "path": "/scraper/places-ai",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Places search successful",
+        "payload": {
+          "places": [
+            {
+              "name": "Autofficina Esposito",
+              "rating": 4.6,
+              "reviews": 212,
+              "address": "Via Toledo 12, 80134 Napoli NA",
+              "phone": "+39 081 000 0000",
+              "website": "https://example.it"
+            }
+          ],
+          "total": 38,
+          "enriched": 10,
+          "queries": [
+            "autofficina Napoli",
+            "meccanico Napoli"
+          ],
+          "summary": "38 repair shops across central Naples.",
+          "model": "gpt-4o-mini",
+          "usage": {
+            "input_tokens": 9800,
+            "output_tokens": 2200,
+            "cost_usd": 0,
+            "free_usd": 0,
+            "paid_usd": 0
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Invalid format. Must be one of: markdown, html, text (or data_format markdown/screenshot, format raw)"
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "402": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Your free tier for this month is used up and your balance can't cover this call (estimated [amount]). Add pay-as-you-go credit or pick a plan — your API key stays the same: https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+        "payload": {
+          "code": "INSUFFICIENT_FUNDS",
+          "balance": 0,
+          "free_remaining": 0,
+          "estimated_cost": 0,
+          "plans_url": "https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+          "billing_mode": "free_first"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

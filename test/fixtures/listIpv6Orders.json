@@ -1,0 +1,83 @@
+{
+  "method": "GET",
+  "path": "/public/ipv6/orders",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Success",
+        "payload": {
+          "orders": [
+            {
+              "id": "ord_7a1c",
+              "product": "ipv6-speed",
+              "status": "active",
+              "createdAt": "2026-10-20T09:00:00.000Z",
+              "speedMbps": 200,
+              "days": 7,
+              "planName": "IPv6 Unlimited · 200 Mbps · 7 days",
+              "trafficMetered": false,
+              "expiresAt": "2026-10-27T09:00:00.000Z",
+              "daysRemaining": 7,
+              "channel": "api",
+              "invoice": {
+                "id": "inv_3b9e",
+                "vat": 0,
+                "vatRate": 0,
+                "paid": true,
+                "status": "PAID",
+                "refunded": false
+              }
+            }
+          ],
+          "pagination": {
+            "total": 1,
+            "limit": 50,
+            "offset": 0,
+            "hasMore": false
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "IPv6 speed plans need your own API key. Create one in the dashboard under API keys.",
+        "payload": {
+          "code": "KEY_REQUIRED"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Too many requests. Try again in 21 minutes.",
+        "payload": {
+          "code": "RATE_LIMITED",
+          "retryAfter": 1260
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "IPv6 speed plans are not available through the API yet. Use the dashboard to buy them.",
+        "payload": {
+          "code": "PRODUCT_DISABLED"
+        }
+      }
+    }
+  }
+}

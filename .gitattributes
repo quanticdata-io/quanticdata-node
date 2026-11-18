@@ -1,0 +1,4 @@
+* text=auto eol=lf
+src/generated/** linguist-generated=true
+test/fixtures/** linguist-generated=true
+openapi/openapi.json linguist-generated=true

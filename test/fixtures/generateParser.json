@@ -1,0 +1,107 @@
+{
+  "method": "POST",
+  "path": "/scraper/parser/generate",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Parser generated",
+        "payload": {
+          "parser": {
+            "title": "h1.product-title",
+            "price": {
+              "selector": "span.price",
+              "attr": null
+            },
+            "sku": "dd.sku"
+          },
+          "report": [
+            {
+              "field": "title",
+              "selector": "h1.product-title",
+              "sample": "Trail Runner 2",
+              "missed": false
+            },
+            {
+              "field": "price",
+              "selector": "span.price",
+              "sample": "[amount]",
+              "missed": false
+            },
+            {
+              "field": "sku",
+              "selector": "dd.sku",
+              "sample": "TR2-42",
+              "missed": false
+            }
+          ],
+          "missed": [],
+          "coverage": 1,
+          "repaired": false,
+          "usage": {
+            "cost_usd": 0,
+            "free_usd": 0,
+            "paid_usd": 0
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Invalid format. Must be one of: markdown, html, text (or data_format markdown/screenshot, format raw)"
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "402": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Your free tier for this month is used up and your balance can't cover this call (estimated [amount]). Add pay-as-you-go credit or pick a plan — your API key stays the same: https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+        "payload": {
+          "code": "INSUFFICIENT_FUNDS",
+          "balance": 0,
+          "free_remaining": 0,
+          "estimated_cost": 0,
+          "plans_url": "https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+          "billing_mode": "free_first"
+        }
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper API is not available: no proxy credentials found. Contact support or purchase a residential, datacenter or IPv6 plan."
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper service unavailable. Please try again later."
+      }
+    }
+  }
+}

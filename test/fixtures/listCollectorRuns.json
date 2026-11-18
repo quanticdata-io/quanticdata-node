@@ -1,0 +1,67 @@
+{
+  "method": "GET",
+  "path": "/scraper/collectors/runs",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Collector runs",
+        "payload": {
+          "runs": [
+            {
+              "run_id": "cmgfq2x1b0001",
+              "slug": "google_maps_places",
+              "version": "1.1.0",
+              "status": "done",
+              "input": {
+                "query": "pizza restaurants",
+                "location": "Brooklyn, NY"
+              },
+              "count": 20,
+              "partial": false,
+              "cost": {
+                "usd": 0,
+                "unit_usd": 0,
+                "unit": "place",
+                "billed": true
+              },
+              "error": null,
+              "created_at": "2026-10-07T09:20:01.000Z",
+              "started_at": "2026-10-07T09:20:01.000Z",
+              "finished_at": "2026-10-07T09:20:14.000Z"
+            }
+          ],
+          "next_cursor": null
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

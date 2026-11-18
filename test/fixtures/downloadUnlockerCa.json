@@ -1,0 +1,36 @@
+{
+  "method": "GET",
+  "path": "/scraper/unlock/ca",
+  "responses": {
+    "200": {
+      "contentType": "application/x-pem-file",
+      "body": "-----BEGIN CERTIFICATE-----\nMIIB…\n-----END CERTIFICATE-----\n"
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Unlocker certificate is temporarily unavailable"
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "method": "GET",
+  "path": "/public/generator/mobile/targeting-options",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Mobile targeting options retrieved successfully",
+        "payload": {
+          "success": true,
+          "message": "Use the tree keys as values for POST /api/v1/public/proxies/generate: country (top-level key), region (regions key), city (cities key), isp (isps[].code).",
+          "data": {
+            "us": {
+              "country_name": "United States",
+              "regions": {
+                "ohio": {
+                  "region_name": "Ohio",
+                  "cities": {
+                    "cincinnati": {
+                      "city_name": "Cincinnati",
+                      "zipcodes": [],
+                      "isps": [
+                        {
+                          "code": "t_mobile_usa",
+                          "name": "T-Mobile Usa"
+                        },
+                        {
+                          "code": "verizon_wireless",
+                          "name": "Verizon Wireless"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "countries": [
+            {
+              "code": "us",
+              "name": "United States"
+            }
+          ]
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "502": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Could not retrieve mobile targeting options. Please try again later."
+      }
+    }
+  }
+}

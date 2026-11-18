@@ -1,0 +1,88 @@
+{
+  "method": "GET",
+  "path": "/scraper/batch/{jobId}",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Batch status",
+        "payload": {
+          "id": "bt_91ac07",
+          "status": "completed",
+          "total": 2,
+          "completed": 2,
+          "failed": 0,
+          "contentTruncated": false,
+          "items": [
+            {
+              "url": "https://example.com/a",
+              "status": 200,
+              "title": "Page A",
+              "description": "…",
+              "canonical": "https://example.com/a",
+              "contentLength": 5120,
+              "engine": "tls",
+              "bytes": 31870
+            },
+            {
+              "url": "https://example.com/b",
+              "status": 200,
+              "title": "Page B",
+              "description": null,
+              "canonical": null,
+              "contentLength": 2210,
+              "engine": "tls",
+              "bytes": 12003
+            }
+          ],
+          "nextCursor": 2,
+          "hasMore": false,
+          "createdAt": 1759828364000,
+          "finishedAt": 1759828370000
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Job not found"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper service unavailable. Please try again later."
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

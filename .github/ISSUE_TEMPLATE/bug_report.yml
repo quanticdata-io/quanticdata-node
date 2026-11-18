@@ -1,0 +1,35 @@
+name: Bug report
+description: Something in the SDK does not work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Please never paste an API key. Replace it with `qd_live_...`.
+  - type: input
+    id: version
+    attributes:
+      label: SDK version
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Node.js version and OS
+      placeholder: Node 22.11, Ubuntu 24.04
+    validations:
+      required: true
+  - type: textarea
+    id: code
+    attributes:
+      label: Minimal code to reproduce
+      render: ts
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behaviour
+      description: Include the error class, `status`, `message` and, if present, `payload`.
+    validations:
+      required: true

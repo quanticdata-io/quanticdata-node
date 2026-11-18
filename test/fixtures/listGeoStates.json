@@ -1,0 +1,66 @@
+{
+  "method": "GET",
+  "path": "/public/geo/states",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "success",
+        "payload": {
+          "states": [
+            {
+              "code": "durres",
+              "state_code": "durres",
+              "name": "Durres",
+              "state": "Durres"
+            }
+          ],
+          "country": "AL",
+          "planType": "residentialpremium"
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "planType query parameter is required"
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "No active proxy plan found. Purchase a residential basic or datacenter traffic plan to use geo-targeting."
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Failed to fetch states. Please try again later."
+      }
+    }
+  }
+}

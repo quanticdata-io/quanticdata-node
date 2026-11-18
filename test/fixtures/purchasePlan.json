@@ -1,0 +1,138 @@
+{
+  "method": "POST",
+  "path": "/public/purchase",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "success",
+        "payload": {
+          "order": {
+            "id": "ord_8c21",
+            "planId": "pln_3e7a",
+            "planName": "Residential - Quark (5GB)",
+            "createdAt": "2026-10-19T10:00:00.000Z"
+          },
+          "invoice": {
+            "id": "inv_4b90",
+            "vat": 0,
+            "status": "PAID",
+            "paid": true
+          },
+          "proxy": {
+            "id": "prx_1",
+            "orderId": "ord_8c21",
+            "username": "user_8c21",
+            "password": "p4ssw0rd",
+            "proxyType": "RESIDENTIAL",
+            "region": "",
+            "bandwidth": 5,
+            "bandwidthLeft": 5,
+            "noOfIps": 0,
+            "noOfWhitelistedIps": 1,
+            "speed": 0,
+            "autoRenewDays": 90,
+            "highConcurrency": false,
+            "highPriority": false,
+            "autoRenew": false,
+            "expiry": "2027-01-17T10:00:00.000Z",
+            "autoRenewLastAt": null,
+            "gbReclaimedAt": null,
+            "createdAt": "2026-10-19T10:00:00.000Z",
+            "updatedAt": "2026-10-19T10:00:00.000Z",
+            "whitelist_ip": []
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "validation error",
+        "payload": [
+          {
+            "message": "\"planId\" is required",
+            "path": [
+              "planId"
+            ],
+            "type": "any.required",
+            "context": {
+              "label": "planId",
+              "key": "planId"
+            }
+          }
+        ]
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Purchases need your own API key. Create one in the dashboard under API keys.",
+        "payload": {
+          "code": "KEY_REQUIRED"
+        }
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Plan not found or inactive"
+      }
+    },
+    "409": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Proxy activation failed and the automatic refund could not be confirmed. Please contact support before purchasing again.",
+        "payload": {
+          "code": "PAYMENT_UNDER_REVIEW",
+          "orderId": "ord_8c21",
+          "invoiceId": "inv_4b90"
+        }
+      }
+    },
+    "422": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Proxy activation failed. You have not been charged — please try again or contact support.",
+        "payload": {
+          "code": "NOT_DELIVERED_REFUNDED",
+          "refunded": true,
+          "orderId": "ord_8c21",
+          "invoiceId": "inv_4b90"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "You have too many unpaid invoices. Please pay at least one invoice or contact customer support to continue.",
+        "payload": {
+          "code": "TOO_MANY_UNPAID_INVOICES",
+          "count": 10
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Internal server error"
+      }
+    }
+  }
+}

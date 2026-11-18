@@ -1,0 +1,168 @@
+{
+  "method": "POST",
+  "path": "/scraper/collectors/{slug}/run",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Collector run complete",
+        "payload": {
+          "run_id": "cmgfq2x1b0001",
+          "slug": "google_maps_places",
+          "version": "1.1.0",
+          "status": "done",
+          "input": {
+            "query": "pizza restaurants",
+            "location": "Brooklyn, NY",
+            "country": "us",
+            "max_results": 20
+          },
+          "count": 20,
+          "partial": false,
+          "cost": {
+            "usd": 0,
+            "unit_usd": 0,
+            "unit": "place",
+            "billed": true
+          },
+          "error": null,
+          "results": [
+            {
+              "rank": 1,
+              "name": "Joe's Pizza",
+              "rating": 4.5,
+              "reviews": 3120,
+              "category": "Pizza restaurant",
+              "address": "7 Carmine St, New York, NY 10014",
+              "phone": "+1 212-366-1182",
+              "website": "joespizzanyc.com",
+              "latitude": 40.7306,
+              "longitude": -74.0027,
+              "place_id": "ChIJ…",
+              "data_id": "0x89c259…:0x…",
+              "found_by": "pizza restaurants Brooklyn, NY"
+            }
+          ],
+          "notes": [],
+          "created_at": "2026-10-07T09:20:01.000Z",
+          "started_at": "2026-10-07T09:20:01.000Z",
+          "finished_at": "2026-10-07T09:20:14.000Z",
+          "usage": {
+            "cost_usd": 0,
+            "free_usd": 0,
+            "paid_usd": 0
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "202": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Collector run queued",
+        "payload": {
+          "run_id": "cmgfq2x1b0001",
+          "status": "queued",
+          "statusUrl": "/api/v1/scraper/collectors/runs/cmgfq2x1b0001"
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Invalid input: location is required",
+        "payload": {
+          "errors": [
+            "location is required"
+          ]
+        }
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "402": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Your free tier for this month is used up and your balance can't cover this call (estimated [amount]). Add pay-as-you-go credit or pick a plan — your API key stays the same: https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+        "payload": {
+          "code": "INSUFFICIENT_FUNDS",
+          "balance": 0,
+          "free_remaining": 0,
+          "estimated_cost": 0,
+          "plans_url": "https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+          "billing_mode": "free_first"
+        }
+      }
+    },
+    "422": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Invalid input: example.com is a documentation placeholder",
+        "payload": {
+          "errors": [
+            "example.com is a documentation placeholder"
+          ],
+          "error_kind": "input"
+        }
+      }
+    },
+    "424": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Collector run failed",
+        "payload": {
+          "run_id": "cmgfq2x1b0002",
+          "slug": "google_maps_places",
+          "version": "1.1.0",
+          "status": "failed",
+          "input": {},
+          "count": 0,
+          "partial": false,
+          "cost": {
+            "usd": 0,
+            "unit_usd": 0,
+            "unit": "place",
+            "billed": false
+          },
+          "error": "source timed out after 3 attempts",
+          "created_at": "2026-10-07T09:20:01.000Z",
+          "started_at": "2026-10-07T09:20:01.000Z",
+          "finished_at": "2026-10-07T09:21:01.000Z"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Too many collector runs this hour.",
+        "payload": {
+          "code": "RUNS_PER_HOUR",
+          "limit": 60,
+          "in_last_hour": 60,
+          "retry_after": 900,
+          "plan": "payg"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

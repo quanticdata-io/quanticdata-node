@@ -1,0 +1,71 @@
+{
+  "method": "GET",
+  "path": "/public/geo/locations",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Location data retrieved successfully",
+        "payload": {
+          "success": true,
+          "message": "Location data retrieved successfully",
+          "data": {
+            "al": {
+              "country_name": "Albania",
+              "regions": {
+                "durres": {
+                  "region_name": "Durres",
+                  "cities": {
+                    "durres": {
+                      "city_name": "Durres",
+                      "isps": [
+                        {
+                          "code": "abissnet_sh.a.",
+                          "name": "Abissnet Sh.A."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "countries": [
+            {
+              "code": "al",
+              "name": "Albania"
+            }
+          ]
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Only planType=residentialpremium is supported for locations"
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    }
+  }
+}

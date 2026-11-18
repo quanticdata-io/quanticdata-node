@@ -1,0 +1,96 @@
+{
+  "method": "GET",
+  "path": "/public/plans",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "success",
+        "payload": {
+          "plans": [
+            {
+              "id": "pln_3e7a",
+              "name": "Residential - Quark (5GB)",
+              "planType": "residentialpremium",
+              "planTypeName": "Residential Premium",
+              "bandwidth": 5,
+              "bandwidthGB": 5,
+              "isUnlimited": false,
+              "duration": 90,
+              "durationDays": 90,
+              "ips": 0,
+              "whitelistSlots": 0,
+              "region": "Global",
+              "speed": 0,
+              "highConcurrency": false,
+              "highPriority": false
+            }
+          ],
+          "groupedPlans": {
+            "residentialpremium": [
+              {
+                "id": "pln_3e7a",
+                "name": "Residential - Quark (5GB)",
+                "planType": "residentialpremium",
+                "planTypeName": "Residential Premium",
+                "bandwidth": 5,
+                "bandwidthGB": 5,
+                "isUnlimited": false,
+                "duration": 90,
+                "durationDays": 90,
+                "ips": 0,
+                "whitelistSlots": 0,
+                "region": "Global",
+                "speed": 0,
+                "highConcurrency": false,
+                "highPriority": false
+              }
+            ]
+          },
+          "planTypes": [
+            {
+              "key": "residentialpremium",
+              "name": "Residential Premium",
+              "description": "Residential premium proxies - Premium quality with high success rate",
+              "features": [
+                "Premium residential IPs",
+                "Higher success rate",
+                "Fast speeds",
+                "Geo-targeting available"
+              ]
+            }
+          ],
+          "total": 1
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Internal server error"
+      }
+    }
+  }
+}
