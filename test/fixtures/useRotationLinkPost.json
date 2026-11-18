@@ -1,0 +1,99 @@
+{
+  "method": "POST",
+  "path": "/public/rotate/{token}",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Session rotated. The next request on this proxy string gets a new IP.",
+        "payload": {
+          "rotated": true,
+          "orderId": "ord_8c21",
+          "sessionId": "a1b2c3",
+          "port": 9999,
+          "protocol": "http",
+          "rotatedAt": "2026-10-19T14:05:00.000Z",
+          "nextAllowedAt": "2026-10-19T14:05:10.000Z",
+          "linkId": "rlk_3f9a1c7e5b2d4a6c8e0f1a2b",
+          "label": "Profile 12"
+        },
+        "pagination": {}
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This account is disabled. Contact support.",
+        "payload": {
+          "code": "ACCOUNT_DISABLED"
+        }
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rotation link not found. Check the URL, or create a new link.",
+        "payload": {
+          "code": "LINK_NOT_FOUND"
+        }
+      }
+    },
+    "409": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rotation links are not available for this plan. For a new IP, request a new sticky proxy string with POST /v1/public/proxies/generate: each string has its own session.",
+        "payload": {
+          "code": "ROTATION_NOT_SUPPORTED",
+          "planType": "residentialpremium",
+          "reason": "new_string_only"
+        }
+      }
+    },
+    "410": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This rotation link was revoked. Create a new one for this session.",
+        "payload": {
+          "code": "LINK_REVOKED"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This session was rotated less than 10 seconds ago. Try again in 7 s.",
+        "payload": {
+          "code": "RATE_LIMITED",
+          "scope": "session",
+          "retryAfter": 7
+        }
+      }
+    },
+    "502": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The IP could not be rotated right now. Your proxy string still works. Try again in a few seconds.",
+        "payload": {
+          "code": "ROTATION_FAILED"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rotation links are temporarily unavailable. Please try again later.",
+        "payload": {
+          "code": "SERVICE_UNAVAILABLE"
+        }
+      }
+    }
+  }
+}

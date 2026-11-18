@@ -1,0 +1,77 @@
+{
+  "method": "GET",
+  "path": "/scraper/crawl/{jobId}",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Crawl status",
+        "payload": {
+          "id": "cr_d5b8a1",
+          "status": "completed",
+          "seed": "https://docs.example.com/",
+          "limit": 50,
+          "depth": 3,
+          "format": "markdown",
+          "pagesCrawled": 37,
+          "pagesQueued": 0,
+          "pages": [
+            {
+              "url": "https://docs.example.com/guides/getting-started",
+              "status": 200,
+              "title": "Getting started",
+              "depth": 1,
+              "content": "# Getting started\n…"
+            }
+          ],
+          "nextCursor": 37,
+          "hasMore": false,
+          "createdAt": 1759828364000,
+          "finishedAt": 1759828512000
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Job not found"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper service unavailable. Please try again later."
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

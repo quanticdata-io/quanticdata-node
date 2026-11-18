@@ -1,0 +1,142 @@
+{
+  "method": "POST",
+  "path": "/scraper/serp",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "SERP successful",
+        "payload": {
+          "search_metadata": {
+            "status": "Success",
+            "engine": "google",
+            "search_url": "https://www.google.com/search?q=best+coffee+grinder&gl=us&hl=en",
+            "created_at": "2026-10-07T09:12:44.000Z",
+            "total_time_taken": 2.8,
+            "attempts": 1,
+            "bytes": 212544,
+            "path": "http"
+          },
+          "search_parameters": {
+            "engine": "google",
+            "q": "best coffee grinder",
+            "search_type": "search",
+            "device": "desktop",
+            "country": "us",
+            "language": "en",
+            "page": 1
+          },
+          "organic": [
+            {
+              "rank": 1,
+              "title": "The 6 Best Coffee Grinders of 2026",
+              "link": "https://example.com/reviews/coffee-grinders",
+              "display_link": "example.com › reviews",
+              "source": "example.com",
+              "description": "We tested 24 burr grinders…",
+              "date": "12 Sep 2026"
+            }
+          ],
+          "ads": [],
+          "people_also_ask": [
+            {
+              "question": "Is a burr grinder worth it?"
+            }
+          ],
+          "related_searches": [
+            {
+              "query": "best coffee grinder under 100"
+            }
+          ],
+          "ai_overview": null,
+          "knowledge_graph": null,
+          "pagination": {
+            "current": 1,
+            "next": 2,
+            "total_pages": null,
+            "other_pages": {
+              "2": "https://www.google.com/search?q=best+coffee+grinder&start=10"
+            },
+            "available_pages": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "has_next": true
+          },
+          "usage": {
+            "cost_usd": 0,
+            "free_usd": 0,
+            "paid_usd": 0
+          }
+        },
+        "pagination": {
+          "current": 1,
+          "next": 2,
+          "total_pages": null,
+          "available_pages": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "has_next": true
+        }
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Invalid format. Must be one of: markdown, html, text (or data_format markdown/screenshot, format raw)"
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "402": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Your free tier for this month is used up and your balance can't cover this call (estimated [amount]). Add pay-as-you-go credit or pick a plan — your API key stays the same: https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+        "payload": {
+          "code": "INSUFFICIENT_FUNDS",
+          "balance": 0,
+          "free_remaining": 0,
+          "estimated_cost": 0,
+          "plans_url": "https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+          "billing_mode": "free_first"
+        }
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper API is not available: no proxy credentials found. Contact support or purchase a residential, datacenter or IPv6 plan."
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper service unavailable. Please try again later."
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

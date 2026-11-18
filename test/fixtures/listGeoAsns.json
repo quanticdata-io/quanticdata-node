@@ -1,0 +1,64 @@
+{
+  "method": "GET",
+  "path": "/public/geo/asns",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "success",
+        "payload": {
+          "asns": [
+            {
+              "asn": "7922",
+              "name": "Comcast Cable Communications, LLC"
+            }
+          ],
+          "country": "US",
+          "planType": "residentialbasic"
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "planType query parameter is required"
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "No active plan found for this plan type. Purchase a residential basic or datacenter (traffic-based) plan."
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Failed to fetch ASNs. Please try again later."
+      }
+    }
+  }
+}

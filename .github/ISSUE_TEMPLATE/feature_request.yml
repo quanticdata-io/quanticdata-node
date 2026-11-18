@@ -1,0 +1,19 @@
+name: Feature request
+description: Suggest a helper or an endpoint the SDK should wrap
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API
+      render: ts
+  - type: input
+    id: endpoint
+    attributes:
+      label: API endpoint involved (from https://quanticdata.io/docs/)

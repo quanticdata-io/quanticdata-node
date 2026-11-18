@@ -1,0 +1,144 @@
+{
+  "method": "GET",
+  "path": "/scraper/unlock/batch/{batch_id}",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Batch status",
+        "payload": {
+          "batch_id": "ub_5e1c9a40d27f",
+          "status": "completed",
+          "total": 3,
+          "completed": 3,
+          "ok": 1,
+          "blocked": 1,
+          "failed": 1,
+          "created_at": "2026-11-11T09:30:00.000Z",
+          "finished_at": "2026-11-11T09:31:02.000Z",
+          "results": [
+            {
+              "index": 0,
+              "url": "https://example.com/a",
+              "status": 200,
+              "blocked": false,
+              "request_id": "7c1f1b2e-5d3a-4a9e-9c0b-2f6e8a1d4b73",
+              "latency_ms": 1840,
+              "tier_served": "tls",
+              "attempts": 1,
+              "cost": {
+                "bytes": 18432,
+                "usd": 0,
+                "billed": true
+              },
+              "content_type": "text/html; charset=utf-8"
+            },
+            {
+              "index": 1,
+              "url": "https://example.com/b",
+              "status": 403,
+              "blocked": true,
+              "block_class": "js_challenge",
+              "vendor": "cloudflare",
+              "request_id": "0b7d9e42-1c35-4f8a-b6d2-9e4f3a7c5d11",
+              "latency_ms": 13095,
+              "tier_served": "browser",
+              "attempts": 4,
+              "cost": {
+                "bytes": 434500,
+                "usd": 0,
+                "billed": true
+              },
+              "content_type": "text/html; charset=utf-8"
+            },
+            {
+              "index": 2,
+              "url": "https://example.com/c",
+              "status": null,
+              "blocked": false,
+              "request_id": "6b0c2e4d-9a8f-4d17-b3e5-2f1a7c9d0e68",
+              "latency_ms": 60000,
+              "tier_served": null,
+              "attempts": 1,
+              "cost": {
+                "bytes": 0,
+                "usd": 0,
+                "billed": false
+              },
+              "error": {
+                "code": "timeout",
+                "message": "No response before timeout_ms ran out."
+              }
+            }
+          ]
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Batch not found. A batch is kept for one hour after it finishes.",
+        "payload": {
+          "code": "bad_request",
+          "retryable": false,
+          "billed": false,
+          "hint": "Fix the parameter named in the message and send the request again.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Too many requests for this account right now.",
+        "payload": {
+          "code": "rate_limited",
+          "retryable": true,
+          "billed": false,
+          "hint": "Wait for Retry-After seconds, lower your concurrency, or move to a plan with a higher limit.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "retry_after": 5
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The unlocker hit an internal error.",
+        "payload": {
+          "code": "internal_error",
+          "retryable": true,
+          "billed": false,
+          "hint": "Retry; if it persists contact support with the request_id.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The unlocker service is not responding.",
+        "payload": {
+          "code": "service_unavailable",
+          "retryable": true,
+          "billed": false,
+          "hint": "Retry in a few seconds.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors"
+        }
+      }
+    }
+  }
+}

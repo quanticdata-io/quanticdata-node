@@ -1,0 +1,81 @@
+{
+  "method": "PUT",
+  "path": "/scraper/parser/presets/{id}",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Preset updated",
+        "payload": {
+          "id": "pst_7Qk3",
+          "name": "example-product",
+          "parser": {
+            "title": "h1.product-title",
+            "price": "span.price"
+          },
+          "version": 1,
+          "autoHeal": false,
+          "createdAt": 1759759331000,
+          "updatedAt": 1759840000000,
+          "lastHealAt": null,
+          "stats": {
+            "runs": 12,
+            "lastRunAt": 1759830000000,
+            "fields": {},
+            "recent": []
+          },
+          "history": []
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Invalid format. Must be one of: markdown, html, text (or data_format markdown/screenshot, format raw)"
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Job not found"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper service unavailable. Please try again later."
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

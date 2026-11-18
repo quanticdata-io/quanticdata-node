@@ -1,0 +1,111 @@
+{
+  "method": "GET",
+  "path": "/scraper/collectors/{slug}",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Collector",
+        "payload": {
+          "collector": {
+            "slug": "google_maps_places",
+            "name": "Google Maps places",
+            "version": "1.1.0",
+            "category": "local",
+            "category_label": "Local & Maps",
+            "tagline": "Businesses for a keyword in a location.",
+            "description": "…",
+            "unit": "place",
+            "engines": [
+              "serp"
+            ],
+            "price": {
+              "list_usd": 0,
+              "your_usd": 0,
+              "price_key": "collector_google_maps_places",
+              "per_1k_usd": 0,
+              "min_billable_results": 0,
+              "min_run_usd": 0
+            },
+            "max_results": 300,
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": [
+                "query",
+                "location"
+              ],
+              "additionalProperties": false
+            },
+            "output_schema": {
+              "fields": []
+            },
+            "examples": [],
+            "health_input": {},
+            "health": {
+              "status": "healthy",
+              "checked_at": "2026-10-07T08:00:12.000Z",
+              "latency_ms": 6210,
+              "result_count": 10,
+              "error": null,
+              "success_rate_24h": 1,
+              "last_ok_at": "2026-10-07T08:00:12.000Z"
+            },
+            "run_url": "/api/v1/scraper/collectors/google_maps_places/run",
+            "changelog": [
+              {
+                "version": "1.1.0",
+                "date": "2026-08-21",
+                "notes": "Paginates past offset 240."
+              }
+            ],
+            "health_history": [
+              {
+                "checked_at": "2026-10-07T08:00:12.000Z",
+                "ok": true,
+                "latency_ms": 6210,
+                "result_count": 10,
+                "error": null
+              }
+            ]
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Unknown collector \"foo\""
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

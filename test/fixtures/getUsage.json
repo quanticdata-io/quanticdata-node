@@ -1,0 +1,62 @@
+{
+  "method": "GET",
+  "path": "/scraper/usage",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Scraper usage",
+        "payload": {
+          "days": [
+            {
+              "date": "2026-10-06",
+              "requests": 143,
+              "by_type": {
+                "extract": 120,
+                "google": 20,
+                "map": 3
+              },
+              "proxy_kb": 61230,
+              "ai_cost_usd": 0,
+              "billed_usd": 0,
+              "free_usd": 0
+            }
+          ],
+          "totals": {
+            "requests": 143,
+            "by_type": {
+              "extract": 120,
+              "google": 20,
+              "map": 3
+            },
+            "proxy_kb": 61230,
+            "billed_usd": 0,
+            "free_usd": 0
+          },
+          "period_days": 30
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    }
+  }
+}

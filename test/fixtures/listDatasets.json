@@ -1,0 +1,65 @@
+{
+  "method": "GET",
+  "path": "/scraper/datasets",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Datasets",
+        "payload": {
+          "datasets": [
+            {
+              "id": "cmgf0",
+              "jobId": "ds_7a1c22",
+              "name": null,
+              "prompt": "Car rental companies in Bologna with phone and website",
+              "columns": "[{\"name\":\"company\",\"type\":\"string\"},{\"name\":\"phone\",\"type\":\"phone\"},{\"name\":\"website\",\"type\":\"url\"}]",
+              "country": "it",
+              "status": "completed",
+              "rowCount": 42,
+              "billableRows": 40,
+              "refresh": false,
+              "createdAt": "2026-10-06T14:02:11.000Z",
+              "completedAt": "2026-10-06T14:09:40.000Z",
+              "purgedAt": null,
+              "costUsd": 0,
+              "stored": true,
+              "storedRows": 42,
+              "storedBytes": 18311,
+              "purged": false,
+              "dropped": null
+            }
+          ]
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

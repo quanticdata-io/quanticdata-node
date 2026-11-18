@@ -1,0 +1,92 @@
+{
+  "method": "GET",
+  "path": "/public/orders",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "success",
+        "payload": {
+          "orders": [
+            {
+              "id": "ord_8c21",
+              "type": "PROXY",
+              "createdAt": "2026-10-19T10:00:00.000Z",
+              "plan": {
+                "id": "pln_3e7a",
+                "name": "Residential - Quark (5GB)",
+                "planType": "residentialpremium",
+                "planTypeName": "Residential Premium",
+                "bandwidth": 5,
+                "bandwidthGB": 5,
+                "duration": 90,
+                "ips": 0,
+                "region": "Global"
+              },
+              "proxy": {
+                "id": "prx_1",
+                "username": "user_8c21",
+                "password": "p4ssw0rd",
+                "planType": "residentialpremium",
+                "planTypeName": "Residential Premium",
+                "bandwidth": 5,
+                "bandwidthGB": 5,
+                "bandwidthLeft": 3.2,
+                "bandwidthLeftGB": 3.2,
+                "isUnlimited": false,
+                "expiry": "2027-01-17T10:00:00.000Z",
+                "isActive": true,
+                "ips": 0,
+                "whitelistedIPs": [],
+                "region": "Global"
+              },
+              "invoices": [
+                {
+                  "id": "inv_4b90",
+                  "status": "PAID",
+                  "paid": true,
+                  "paidAt": "2026-10-19T10:00:01.000Z",
+                  "createdAt": "2026-10-19T10:00:00.000Z"
+                }
+              ]
+            }
+          ],
+          "pagination": {
+            "total": 1,
+            "limit": 50,
+            "offset": 0,
+            "hasMore": false
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Internal server error"
+      }
+    }
+  }
+}

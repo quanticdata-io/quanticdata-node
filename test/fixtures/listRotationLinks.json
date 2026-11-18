@@ -1,0 +1,108 @@
+{
+  "method": "GET",
+  "path": "/public/proxies/{orderId}/rotation-links",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Success",
+        "payload": {
+          "orderId": "ord_8c21",
+          "planType": "residentialbasic",
+          "links": [
+            {
+              "id": "rlk_3f9a1c7e5b2d4a6c8e0f1a2b",
+              "sessionId": "a1b2c3",
+              "port": 9999,
+              "protocol": "http",
+              "label": "Profile 12",
+              "tokenHint": "1d0e",
+              "useCount": 14,
+              "lastUsedAt": "2026-10-19T14:05:00.000Z",
+              "createdAt": "2026-10-19T14:05:00.000Z",
+              "revoked": false,
+              "revokedAt": null
+            }
+          ],
+          "limits": {
+            "activeLinksPerPlan": 1000,
+            "cooldownSeconds": 10
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "A valid orderId is required.",
+        "payload": {
+          "code": "VALIDATION_ERROR"
+        }
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rotation needs your own API key. Create one in the dashboard under API keys.",
+        "payload": {
+          "code": "KEY_REQUIRED"
+        }
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Order not found.",
+        "payload": {
+          "code": "ORDER_NOT_FOUND"
+        }
+      }
+    },
+    "409": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rotation links are not available for this plan. For a new IP, request a new sticky proxy string with POST /v1/public/proxies/generate: each string has its own session.",
+        "payload": {
+          "code": "ROTATION_NOT_SUPPORTED",
+          "planType": "residentialpremium",
+          "reason": "new_string_only"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rotation links are temporarily unavailable. Please try again later.",
+        "payload": {
+          "code": "SERVICE_UNAVAILABLE"
+        }
+      }
+    }
+  }
+}

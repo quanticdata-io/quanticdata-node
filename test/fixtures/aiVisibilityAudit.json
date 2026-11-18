@@ -1,0 +1,158 @@
+{
+  "method": "POST",
+  "path": "/scraper/ai-visibility",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "AI visibility audit successful",
+        "payload": {
+          "url": "https://example.com/blog/how-to-choose-a-proxy",
+          "finalUrl": "https://example.com/blog/how-to-choose-a-proxy",
+          "domain": "example.com",
+          "score": {
+            "overall": 71,
+            "pillars": {
+              "access": 90,
+              "content": 68,
+              "structure": 60,
+              "citability": 66
+            },
+            "scoredPillars": [
+              "access",
+              "content",
+              "structure",
+              "citability"
+            ],
+            "blockers": [],
+            "uncapped": 71
+          },
+          "checks": [
+            {
+              "id": "robots_gptbot",
+              "pillar": "access",
+              "status": "pass",
+              "weight": 8,
+              "title": "GPTBot allowed",
+              "detail": "robots.txt does not disallow GPTBot.",
+              "evidence": {
+                "rule": null
+              }
+            }
+          ],
+          "topFixes": [
+            {
+              "id": "author_resolvable",
+              "status": "fail",
+              "title": "Author not resolvable",
+              "fix": "Add an author Person node with url or sameAs."
+            }
+          ],
+          "access": {
+            "robotsTxtFound": true,
+            "robotsTxtUrl": "https://example.com/robots.txt",
+            "blockedCritical": [],
+            "sitemaps": [
+              "https://example.com/sitemap.xml"
+            ],
+            "llmsTxt": false
+          },
+          "content": {
+            "contentOnlyInJs": false,
+            "fkGrade": 9.1
+          },
+          "structure": {
+            "jsonldTypes": [
+              "Article"
+            ],
+            "hasAuthor": true,
+            "authorResolvable": false
+          },
+          "citations": {
+            "rows": [
+              {
+                "query": "how do I choose a residential proxy provider?",
+                "engine": "perplexity",
+                "cited": false,
+                "mentioned": true,
+                "rank": null,
+                "citedDomains": [
+                  "competitor.example"
+                ]
+              }
+            ],
+            "usage": {
+              "perplexity": {
+                "searches": 1
+              }
+            }
+          },
+          "geo": {
+            "country": null
+          },
+          "billing": {
+            "citation_calls_billed": 2,
+            "offsite_serps_billed": 2
+          },
+          "usage": {
+            "cost_usd": 0,
+            "free_usd": 0,
+            "paid_usd": 0
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Invalid format. Must be one of: markdown, html, text (or data_format markdown/screenshot, format raw)"
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "402": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Your free tier for this month is used up and your balance can't cover this call (estimated [amount]). Add pay-as-you-go credit or pick a plan — your API key stays the same: https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+        "payload": {
+          "code": "INSUFFICIENT_FUNDS",
+          "balance": 0,
+          "free_remaining": 0,
+          "estimated_cost": 0,
+          "plans_url": "https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+          "billing_mode": "free_first"
+        }
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper API is not available: no proxy credentials found. Contact support or purchase a residential, datacenter or IPv6 plan."
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Scraper service unavailable. Please try again later."
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

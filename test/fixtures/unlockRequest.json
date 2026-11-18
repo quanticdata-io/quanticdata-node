@@ -1,0 +1,282 @@
+{
+  "method": "POST",
+  "path": "/scraper/unlock",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Unlocker request successful",
+        "payload": {
+          "request_id": "7c1f1b2e-5d3a-4a9e-9c0b-2f6e8a1d4b73",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "max-age=600"
+          },
+          "body": "<!doctype html><html><head><title>Example Domain</title></head><body><p>This domain is for use in illustrative examples in documents.</p></body></html>",
+          "bodyBase64": "PCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PHRpdGxlPkV4YW1wbGUgRG9tYWluPC90aXRsZT48L2hlYWQ+PGJvZHk+PGgxPkV4YW1wbGUgRG9tYWluPC9oMT48cD5UaGlzIGRvbWFpbiBpcyBmb3IgdXNlIGluIGlsbHVzdHJhdGl2ZSBleGFtcGxlcyBpbiBkb2N1bWVudHMuPC9wPjwvYm9keT48L2h0bWw+",
+          "finalUrl": "https://example.com/",
+          "contentType": "text/html; charset=utf-8",
+          "profile": "chrome",
+          "attempts": 1,
+          "cache": "off",
+          "blocked": false,
+          "clearance": "miss",
+          "exitSessionId": "s_2f91",
+          "strategy": {
+            "startTier": "tls",
+            "hedged": false
+          },
+          "rendered": false,
+          "escalated": false,
+          "mode": "auto",
+          "tier_served": "tls",
+          "format": "html",
+          "tier": "premium",
+          "geo": {
+            "country": "us",
+            "state": null,
+            "city": null,
+            "rotation": "rotating"
+          },
+          "latency_ms": 1840,
+          "attempt_log": [
+            {
+              "tier": "tls",
+              "profile": "chrome",
+              "exit_country": "us",
+              "outcome": "ok",
+              "ms": 1840,
+              "bytes": 18432
+            }
+          ],
+          "usage": {
+            "bytes": 18432,
+            "unlock_gb_remaining": 4.98,
+            "unlock_gb_purchased": 5
+          },
+          "cost": {
+            "bytes": 18432,
+            "usd": 0,
+            "billed": true
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Invalid timeout_ms. Must be an integer between 1000 and 120000",
+        "payload": {
+          "code": "bad_request",
+          "retryable": false,
+          "billed": false,
+          "hint": "Fix the parameter named in the message and send the request again.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors"
+        }
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "402": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This account has no residential Web Unlocker GB yet. The unlocker is prepaid per GB, separate from the Data API free credit, and paid from your wallet balance. Buy GB, then retry, your API key stays the same: https://app.quanticdata.io/plans?network=UNLOCK&utm_source=api&utm_medium=402&utm_campaign=web-unlocker",
+        "payload": {
+          "code": "no_credit",
+          "retryable": false,
+          "billed": false,
+          "hint": "Buy GB from the dashboard, then retry with the same key or proxy user.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "reason": "never_bought",
+          "tier": "premium",
+          "unlock_gb_remaining": 0,
+          "unlock_gb_purchased": 0,
+          "expires_at": null,
+          "expired": false,
+          "buy_url": "https://app.quanticdata.io/plans?network=UNLOCK&utm_source=api&utm_medium=402&utm_campaign=web-unlocker"
+        }
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The mobile Web Unlocker has no exit pool for your account yet.",
+        "payload": {
+          "code": "no_exit_pool",
+          "retryable": false,
+          "billed": false,
+          "hint": "Buy GB on this tier so its exit pool is set up, or use tier \"premium\".",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "tier": "mobile"
+        }
+      }
+    },
+    "422": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Action 2 failed ({\"waitForSelector\":\".results\"}): nothing on the page matched it within 15000 ms",
+        "payload": {
+          "code": "action_failed",
+          "retryable": false,
+          "billed": false,
+          "hint": "The page loaded but one of your actions could not run. Check the selector or the text of the action named in the message.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "url": "https://example.com/search?q=shoes",
+          "request_id": "7c1f0a9e2b4d6e80",
+          "latency_ms": 17480,
+          "mode": "auto",
+          "attempt_log": []
+        }
+      }
+    },
+    "424": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The target refused the request on every tier.",
+        "payload": {
+          "code": "target_blocked",
+          "retryable": true,
+          "billed": true,
+          "hint": "Retry with mode \"browser\", another country, or a sticky session; drop fail_on_block to receive the blocked page as a 200.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "request_id": "0b7d9e42-1c35-4f8a-b6d2-9e4f3a7c5d11",
+          "status": 403,
+          "blockReason": "js_challenge",
+          "blockClass": "js_challenge",
+          "vendor": "cloudflare",
+          "attempts": 4,
+          "tier_served": "browser",
+          "rendered": true,
+          "escalated": true,
+          "latency_ms": 13095,
+          "attempt_log": [
+            {
+              "tier": "tls",
+              "profile": "chrome",
+              "exit_country": "us",
+              "outcome": "blocked",
+              "ms": 1210,
+              "bytes": 42010,
+              "block_class": "js_challenge",
+              "reason": "js_challenge"
+            },
+            {
+              "tier": "tls",
+              "profile": "firefox",
+              "exit_country": "us",
+              "outcome": "blocked",
+              "ms": 980,
+              "bytes": 41366,
+              "block_class": "js_challenge",
+              "reason": "js_challenge"
+            },
+            {
+              "tier": "tls",
+              "profile": "safari",
+              "exit_country": "us",
+              "outcome": "blocked",
+              "ms": 1105,
+              "bytes": 41620,
+              "block_class": "js_challenge",
+              "reason": "js_challenge"
+            },
+            {
+              "tier": "browser",
+              "profile": "chrome",
+              "exit_country": "us",
+              "outcome": "blocked",
+              "ms": 9800,
+              "bytes": 309504,
+              "block_class": "js_challenge",
+              "reason": "challenge:challenge-platform"
+            }
+          ],
+          "usage": {
+            "bytes": 434500,
+            "unlock_gb_remaining": 4.979,
+            "unlock_gb_purchased": 5
+          },
+          "cost": {
+            "bytes": 434500,
+            "usd": 0,
+            "billed": true
+          }
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Too many requests for this account right now.",
+        "payload": {
+          "code": "rate_limited",
+          "retryable": true,
+          "billed": false,
+          "hint": "Wait for Retry-After seconds, lower your concurrency, or move to a plan with a higher limit.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "retry_after": 5
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The unlocker hit an internal error.",
+        "payload": {
+          "code": "internal_error",
+          "retryable": true,
+          "billed": false,
+          "hint": "Retry; if it persists contact support with the request_id.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "request_id": "e4d1c6a0-2b7f-4c58-9a13-7f0e5b2d8c91"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The exit or the target could not be reached.",
+        "payload": {
+          "code": "upstream_failed",
+          "retryable": true,
+          "billed": false,
+          "hint": "Retry: the next attempt runs on a fresh exit.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "request_id": "9f2b4d6e-0a1c-4e83-b5d7-3c8e1f6a2d40"
+        }
+      }
+    },
+    "504": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "No response before timeout_ms ran out.",
+        "payload": {
+          "code": "timeout",
+          "retryable": true,
+          "billed": false,
+          "hint": "Raise timeout_ms (up to 120000) or use mode \"tls\" for a faster first answer.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "request_id": "6b0c2e4d-9a8f-4d17-b3e5-2f1a7c9d0e68",
+          "timeout_ms": 60000
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "method": "GET",
+  "path": "/public/ipv6/plans",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Success",
+        "payload": {
+          "currency": "USD",
+          "paymentMethod": "BALANCE",
+          "vatRate": 0,
+          "terms": [
+            1,
+            7,
+            30
+          ],
+          "speeds": [
+            {
+              "speedMbps": 30,
+              "terms": [
+                {
+                  "days": 1,
+                  "planName": "IPv6 Unlimited · 30 Mbps · 1 day"
+                },
+                {
+                  "days": 7,
+                  "planName": "IPv6 Unlimited · 30 Mbps · 7 days"
+                },
+                {
+                  "days": 30,
+                  "planName": "IPv6 Unlimited · 30 Mbps · 30 days"
+                }
+              ]
+            },
+            {
+              "speedMbps": 60,
+              "terms": [
+                {
+                  "days": 1,
+                  "planName": "IPv6 Unlimited · 60 Mbps · 1 day"
+                },
+                {
+                  "days": 7,
+                  "planName": "IPv6 Unlimited · 60 Mbps · 7 days"
+                },
+                {
+                  "days": 30,
+                  "planName": "IPv6 Unlimited · 60 Mbps · 30 days"
+                }
+              ]
+            },
+            {
+              "speedMbps": 120,
+              "terms": [
+                {
+                  "days": 1,
+                  "planName": "IPv6 Unlimited · 120 Mbps · 1 day"
+                },
+                {
+                  "days": 7,
+                  "planName": "IPv6 Unlimited · 120 Mbps · 7 days"
+                },
+                {
+                  "days": 30,
+                  "planName": "IPv6 Unlimited · 120 Mbps · 30 days"
+                }
+              ]
+            },
+            {
+              "speedMbps": 200,
+              "terms": [
+                {
+                  "days": 1,
+                  "planName": "IPv6 Unlimited · 200 Mbps · 1 day"
+                },
+                {
+                  "days": 7,
+                  "planName": "IPv6 Unlimited · 200 Mbps · 7 days"
+                },
+                {
+                  "days": 30,
+                  "planName": "IPv6 Unlimited · 200 Mbps · 30 days"
+                }
+              ]
+            }
+          ],
+          "from": {
+            "speedMbps": 30,
+            "days": 1
+          },
+          "onRequest": {
+            "speedMbps": 1000,
+            "price": null,
+            "availability": "contact",
+            "how": "Ask for it in the dashboard: Plans → IPv6 → 1000 Mbps → Contact us. We reply by e-mail with the price."
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "IPv6 speed plans need your own API key. Create one in the dashboard under API keys.",
+        "payload": {
+          "code": "KEY_REQUIRED"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Too many requests. Try again in 21 minutes.",
+        "payload": {
+          "code": "RATE_LIMITED",
+          "retryAfter": 1260
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "IPv6 speed plans are not available through the API yet. Use the dashboard to buy them.",
+        "payload": {
+          "code": "PRODUCT_DISABLED"
+        }
+      }
+    }
+  }
+}

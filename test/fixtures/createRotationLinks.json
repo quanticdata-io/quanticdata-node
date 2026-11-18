@@ -1,0 +1,116 @@
+{
+  "method": "POST",
+  "path": "/public/proxies/{orderId}/rotation-links",
+  "responses": {
+    "201": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Rotation links created. Save each url now: it is not shown again.",
+        "payload": {
+          "orderId": "ord_8c21",
+          "links": [
+            {
+              "id": "rlk_3f9a1c7e5b2d4a6c8e0f1a2b",
+              "sessionId": "a1b2c3",
+              "port": 9999,
+              "protocol": "http",
+              "label": "Profile 12",
+              "tokenHint": "1d0e",
+              "useCount": 0,
+              "lastUsedAt": null,
+              "createdAt": "2026-10-19T14:05:00.000Z",
+              "revoked": false,
+              "revokedAt": null,
+              "url": "https://api.quanticdata.io/v1/public/rotate/rl_6f1c0e2b9a7d4c3e8f5a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e",
+              "token": "rl_6f1c0e2b9a7d4c3e8f5a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e"
+            }
+          ]
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This is a rotating proxy string: it already gets a new IP on every request. Rotation works on sticky strings (rotation: \"sticky\" in generate).",
+        "payload": {
+          "code": "SESSION_REQUIRED"
+        }
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rotation needs your own API key. Create one in the dashboard under API keys.",
+        "payload": {
+          "code": "KEY_REQUIRED"
+        }
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Order not found.",
+        "payload": {
+          "code": "ORDER_NOT_FOUND"
+        }
+      }
+    },
+    "409": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rotation links are not available for this plan. For a new IP, request a new sticky proxy string with POST /v1/public/proxies/generate: each string has its own session.",
+        "payload": {
+          "code": "ROTATION_NOT_SUPPORTED",
+          "planType": "residentialpremium",
+          "reason": "new_string_only"
+        }
+      }
+    },
+    "410": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This plan has expired.",
+        "payload": {
+          "code": "PLAN_EXPIRED",
+          "planType": "residentialbasic"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rotation links are temporarily unavailable. Please try again later.",
+        "payload": {
+          "code": "SERVICE_UNAVAILABLE"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "method": "GET",
+  "path": "/public/unlock/status",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "state": "operational",
+        "canary": {
+          "measuredAt": "2026-11-11",
+          "runs": 3,
+          "targets": 27,
+          "channel": "engine-local",
+          "provisional": false,
+          "note": "Captcha demo pages (hCaptcha, reCAPTCHA) are run but excluded: interactive captchas are not solved.",
+          "summary": {
+            "calls": 81,
+            "ok": 72,
+            "rate": 88.9,
+            "p50Ms": 4103,
+            "p95Ms": 28793
+          },
+          "vendors": {
+            "datadome": {
+              "label": "DataDome",
+              "calls": 9,
+              "ok": 8,
+              "rate": 88.9,
+              "p50Ms": 3557,
+              "p95Ms": 14903
+            }
+          }
+        },
+        "history": [
+          {
+            "measuredAt": "2026-11-11",
+            "calls": 81,
+            "ok": 72,
+            "rate": 88.9,
+            "p50Ms": 4103,
+            "p95Ms": 28793
+          },
+          {
+            "measuredAt": "2026-11-04",
+            "calls": 51,
+            "ok": 43,
+            "rate": 84.3,
+            "p50Ms": 7212,
+            "p95Ms": 35325
+          }
+        ],
+        "updated_at": "2026-11-11T00:00:00.000Z"
+      }
+    }
+  }
+}

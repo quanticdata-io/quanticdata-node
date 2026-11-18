@@ -1,0 +1,89 @@
+{
+  "method": "DELETE",
+  "path": "/scraper/unlock/batch/{batch_id}",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Batch cancelled",
+        "payload": {
+          "batch_id": "ub_5e1c9a40d27f",
+          "status": "cancelled",
+          "total": 3,
+          "completed": 1,
+          "ok": 1,
+          "blocked": 0,
+          "failed": 0,
+          "created_at": "2026-11-11T09:30:00.000Z",
+          "finished_at": "2026-11-11T09:30:05.000Z"
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Batch not found. A batch is kept for one hour after it finishes.",
+        "payload": {
+          "code": "bad_request",
+          "retryable": false,
+          "billed": false,
+          "hint": "Fix the parameter named in the message and send the request again.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Too many requests for this account right now.",
+        "payload": {
+          "code": "rate_limited",
+          "retryable": true,
+          "billed": false,
+          "hint": "Wait for Retry-After seconds, lower your concurrency, or move to a plan with a higher limit.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors",
+          "retry_after": 5
+        }
+      }
+    },
+    "500": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The unlocker hit an internal error.",
+        "payload": {
+          "code": "internal_error",
+          "retryable": true,
+          "billed": false,
+          "hint": "Retry; if it persists contact support with the request_id.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The unlocker service is not responding.",
+        "payload": {
+          "code": "service_unavailable",
+          "retryable": true,
+          "billed": false,
+          "hint": "Retry in a few seconds.",
+          "doc_url": "https://quanticdata.io/docs/#unlock-errors"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "method": "GET",
+  "path": "/scraper/collectors",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Collectors",
+        "payload": {
+          "collectors": [
+            {
+              "slug": "google_maps_places",
+              "name": "Google Maps places",
+              "version": "1.1.0",
+              "category": "local",
+              "category_label": "Local & Maps",
+              "tagline": "Businesses for a keyword in a location — name, rating, address, phone, website, coordinates.",
+              "description": "Searches Google's local results for a keyword in a location and delivers de-duplicated place records with contact and geo fields.",
+              "unit": "place",
+              "engines": [
+                "serp"
+              ],
+              "price": {
+                "list_usd": 0,
+                "your_usd": 0,
+                "price_key": "collector_google_maps_places",
+                "per_1k_usd": 0,
+                "min_billable_results": 0,
+                "min_run_usd": 0
+              },
+              "max_results": 300,
+              "input_schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "title": "Keyword",
+                    "minLength": 2,
+                    "maxLength": 120,
+                    "examples": [
+                      "pizza restaurants"
+                    ]
+                  },
+                  "location": {
+                    "type": "string",
+                    "title": "Location",
+                    "minLength": 2,
+                    "maxLength": 120,
+                    "examples": [
+                      "Brooklyn, NY"
+                    ]
+                  },
+                  "country": {
+                    "type": "string",
+                    "format": "country"
+                  },
+                  "lang": {
+                    "type": "string",
+                    "format": "lang"
+                  },
+                  "max_results": {
+                    "type": "integer",
+                    "default": 20,
+                    "minimum": 1,
+                    "maximum": 300
+                  },
+                  "enrich_details": {
+                    "type": "boolean",
+                    "default": true
+                  }
+                },
+                "required": [
+                  "query",
+                  "location"
+                ],
+                "additionalProperties": false
+              },
+              "output_schema": {
+                "fields": [
+                  {
+                    "name": "rank",
+                    "type": "integer",
+                    "description": "1-based position across the merged pages."
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "description": "Business name."
+                  },
+                  {
+                    "name": "rating",
+                    "type": "number",
+                    "nullable": true,
+                    "description": "Star rating (1–5)."
+                  },
+                  {
+                    "name": "place_id",
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Google place id."
+                  }
+                ]
+              },
+              "examples": [
+                {
+                  "title": "Pizza in Brooklyn",
+                  "input": {
+                    "query": "pizza restaurants",
+                    "location": "Brooklyn, NY",
+                    "country": "us",
+                    "max_results": 20
+                  }
+                }
+              ],
+              "health_input": {
+                "query": "pizza",
+                "location": "Brooklyn, NY",
+                "country": "us",
+                "max_results": 10
+              },
+              "health": {
+                "status": "healthy",
+                "checked_at": "2026-10-07T08:00:12.000Z",
+                "latency_ms": 6210,
+                "result_count": 10,
+                "error": null,
+                "success_rate_24h": 1,
+                "last_ok_at": "2026-10-07T08:00:12.000Z"
+              },
+              "run_url": "/api/v1/scraper/collectors/google_maps_places/run"
+            }
+          ],
+          "billing": {
+            "enabled": true,
+            "discount_multiplier": 1
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This API is temporarily unavailable while we finalize pricing. Contact support for early access."
+      }
+    }
+  }
+}

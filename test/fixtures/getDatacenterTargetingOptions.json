@@ -1,0 +1,74 @@
+{
+  "method": "GET",
+  "path": "/public/generator/datacenter/targeting-options",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Datacenter (static gateways) targeting options retrieved successfully",
+        "payload": {
+          "success": true,
+          "message": "Available locations for Datacenter (static gateways) plans. Use host + portHttp (9999) or portSocks5 (10000) with your proxy credentials.",
+          "locations": [
+            {
+              "code": "us",
+              "name": "United States",
+              "host": "datacenter-us.quanticdata.io",
+              "portHttp": 9999,
+              "portSocks5": 10000
+            },
+            {
+              "code": "ca",
+              "name": "Canada",
+              "host": "datacenter-ca.quanticdata.io",
+              "portHttp": 9999,
+              "portSocks5": 10000
+            },
+            {
+              "code": "de",
+              "name": "Germany",
+              "host": "datacenter-de.quanticdata.io",
+              "portHttp": 9999,
+              "portSocks5": 10000
+            },
+            {
+              "code": "gb",
+              "name": "United Kingdom",
+              "host": "datacenter-gb.quanticdata.io",
+              "portHttp": 9999,
+              "portSocks5": 10000
+            },
+            {
+              "code": "nl",
+              "name": "Netherlands",
+              "host": "datacenter-nl.quanticdata.io",
+              "portHttp": 9999,
+              "portSocks5": 10000
+            }
+          ]
+        },
+        "pagination": {}
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    }
+  }
+}

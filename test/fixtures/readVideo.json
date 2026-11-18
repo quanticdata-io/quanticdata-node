@@ -1,0 +1,210 @@
+{
+  "method": "POST",
+  "path": "/scraper/video",
+  "responses": {
+    "200": {
+      "contentType": "application/json",
+      "body": {
+        "type": "response",
+        "message": "Video read successful",
+        "payload": {
+          "video": {
+            "platform": "youtube",
+            "id": "aircAruvnKk",
+            "url": "https://www.youtube.com/watch?v=aircAruvnKk",
+            "title": "But what is a neural network? | Deep learning chapter 1",
+            "channel": "3Blue1Brown",
+            "channel_id": "UCYO_jab_esuFRV4b17AJtAw",
+            "duration_seconds": 1120,
+            "view_count": 24894419,
+            "keywords": [
+              "neural network",
+              "deep learning"
+            ],
+            "is_live": false,
+            "thumbnail": "https://i.ytimg.com/vi/aircAruvnKk/hqdefault.jpg"
+          },
+          "transcript": {
+            "source": "captions",
+            "language": "en",
+            "available": [
+              {
+                "code": "en",
+                "kind": "manual"
+              },
+              {
+                "code": "it",
+                "kind": "manual"
+              }
+            ]
+          },
+          "chapters": [
+            {
+              "start": 0,
+              "title": "Introduction example"
+            },
+            {
+              "start": 67,
+              "title": "Series preview"
+            },
+            {
+              "start": 162,
+              "title": "What are neurons?"
+            }
+          ],
+          "frames": [
+            {
+              "n": 1,
+              "t": 130,
+              "at": "2:10",
+              "reason": "cue",
+              "quote": "and in recent years there's been sort of a boom in research towards these variants",
+              "width": 160,
+              "height": 90,
+              "mime": "image/jpeg",
+              "data": "/9j/4AAQSkZJRgABAQAAAQABAAD…"
+            },
+            {
+              "n": 2,
+              "t": 165,
+              "at": "2:45",
+              "reason": "chapter",
+              "quote": "What are neurons?",
+              "width": 160,
+              "height": 90,
+              "mime": "image/jpeg",
+              "data": "/9j/4AAQSkZJRgABAQAAAQABAAD…"
+            }
+          ],
+          "frame_size": {
+            "width": 160,
+            "height": 90,
+            "interval": 10
+          },
+          "format": "markdown",
+          "content": "# But what is a neural network? | Deep learning chapter 1\nChannel: 3Blue1Brown · Duration: 18:40 · Views: 24894419\nURL: https://www.youtube.com/watch?v=aircAruvnKk\nTranscript: en (captions), original language, timestamps [m:ss]\nFrames: 6 storyboard frames of 160×90 px, marked [frame N · m:ss · why]; low resolution — scenes and objects are visible, small text is not\n\n## Description\nWhat are the neurons, why are there layers, and what is the math underlying it?\n…\n\n## Timeline\n## [0:00] Introduction example\n\n[0:04] This is a 3. It's sloppily written and rendered at an extremely low resolution of 28x28 pixels, but your brain has no trouble recognizing it as a 3. …\n[frame 1 · 2:10 · the speaker points at the screen]\n[2:12] but in these two introductory videos you and I are just going to look at the simplest plain vanilla form …\n\n## [2:42] What are neurons?\n\n[frame 2 · 2:45 · chapter start]\n[2:42] So let's start by looking at an example of a neuron …",
+          "tokens": {
+            "estimated": 3996,
+            "full": 5780,
+            "truncated": true,
+            "estimator": "chars/4 heuristic"
+          },
+          "notes": [
+            "content trimmed to max_tokens: pass start/end to read the rest of the video"
+          ],
+          "meta": {
+            "bytes": 502969,
+            "via_proxy": false
+          }
+        },
+        "pagination": {}
+      }
+    },
+    "400": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Invalid format. Must be one of: markdown, html, text (or data_format markdown/screenshot, format raw)"
+      }
+    },
+    "401": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Missing or invalid Authorization header. Use: Authorization: Bearer qd_live_YOUR_API_KEY"
+      }
+    },
+    "402": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Your free tier for this month is used up and your balance can't cover this call (estimated [amount]). Add pay-as-you-go credit or pick a plan — your API key stays the same: https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+        "payload": {
+          "code": "INSUFFICIENT_FUNDS",
+          "balance": 0,
+          "free_remaining": 0,
+          "estimated_cost": 0,
+          "plans_url": "https://app.quanticdata.io/plans?utm_source=api&utm_medium=402&utm_campaign=free-tier",
+          "billing_mode": "free_first"
+        }
+      }
+    },
+    "403": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This video needs a signed-in viewer (age or membership gated) and cannot be read.",
+        "payload": {
+          "url": "https://www.youtube.com/watch?v=xxxxxxxxxxx",
+          "code": "video_login_required"
+        }
+      }
+    },
+    "404": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Video not found: it was removed, is private, or the id is wrong.",
+        "payload": {
+          "url": "https://www.youtube.com/watch?v=xxxxxxxxxxx",
+          "code": "video_unavailable"
+        }
+      }
+    },
+    "422": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "This live stream has not started yet.",
+        "payload": {
+          "url": "https://www.youtube.com/watch?v=xxxxxxxxxxx",
+          "code": "video_live_offline"
+        }
+      }
+    },
+    "429": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Rate limit exceeded. Resets in 23 minutes.",
+        "payload": {
+          "rateLimit": 1200,
+          "requestCount": 1200,
+          "resetAt": "2026-10-07T15:00:00.000Z"
+        }
+      }
+    },
+    "502": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The video platform did not answer. Try again in a minute.",
+        "payload": {
+          "url": "https://www.youtube.com/watch?v=aircAruvnKk",
+          "code": "video_platform_error"
+        }
+      }
+    },
+    "503": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "The Video API is not open yet. Ask support for early access, or read videos with the read_video tool of the MCP server.",
+        "payload": {
+          "code": "PRODUCT_DISABLED"
+        }
+      }
+    },
+    "504": {
+      "contentType": "application/json",
+      "body": {
+        "type": "error",
+        "message": "Video read timed out. Pass start/end to read a shorter window.",
+        "payload": {
+          "url": "https://www.youtube.com/watch?v=aircAruvnKk",
+          "code": null
+        }
+      }
+    }
+  }
+}
